@@ -46,17 +46,18 @@ const shuffledAnswers = computed(() => {
 </script>
 
 <template>
-  <main>
-    <h1>Quiz</h1>
-    <div v-if="quizProgress !== quizLength">
-      <p>Progress: {{ quizProgress + 1 }} / {{ quizLength }}</p>
+  <main class="quiz-view">
+    <div class="question" v-if="quizProgress !== quizLength">
       <QuizQuestion
         :question="currentQuestion.question"
         :category="currentQuestion.category"
         :answers="shuffledAnswers"
         :handleAnswer="handleAnswer"
       />
-      <button @click="handleResetQuiz">New quiz</button>
+      <div class="status">
+        <p>Progress: {{ quizProgress + 1 }} / {{ quizLength }}</p>
+        <button class="secondary" @click="handleResetQuiz">New quiz</button>
+      </div>
     </div>
     <QuizCompleted
       v-else
@@ -66,3 +67,22 @@ const shuffledAnswers = computed(() => {
     />
   </main>
 </template>
+
+<style scoped>
+div.question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  > div.status {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    > p {
+      font-size: 1.1em;
+      margin: 0;
+    }
+  }
+}
+</style>
