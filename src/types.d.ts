@@ -2,7 +2,7 @@ type QuizDifficulty = 'easy' | 'medium' | 'hard'
 type QuestionType = 'multiple' | 'boolean'
 
 interface Question {
-  type: QuizDifficulty
+  type: QuestionType
   difficulty: QuizDifficulty
   category: string
   question: string

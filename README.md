@@ -1,18 +1,15 @@
-# trivia-vue
+# Trivia Quiz
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple trivia quiz app built with Vue 3, Typescript, and the [OpenTrivia API]("https://opentdb.com/api_config.php").
 
-## Recommended IDE Setup
+## Live Demo
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Features
 
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Fetches questions of varying difficulty and amount from the OpenTrivia API
+- Uses local storage to save user's quiz progress and api session token
+- Api session token is used to prevent duplicate questions in subsequent games
+- Mobile responsive design
 
 ## Project Setup
 
@@ -26,20 +23,8 @@ npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```

@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import router from '@/router'
-
-const handleResetQuiz = () => {
-  localStorage.removeItem('quizQuestions')
-  localStorage.removeItem('quizProgress')
-  localStorage.removeItem('quizScore')
-  router.push('/')
-}
+import { handleResetQuiz } from '@/services/trivia'
 </script>
 
 <template>

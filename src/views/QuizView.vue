@@ -4,6 +4,7 @@ import router from '@/router'
 import QuizQuestion from '@/components/QuizQuestion.vue'
 import { useLocalStorage } from '@/composables/useLocalStorage'
 import QuizCompleted from '@/components/QuizCompleted.vue'
+import { handleResetQuiz } from '@/services/trivia'
 
 const questions = ref<Question[]>([])
 const quizProgress = useLocalStorage(0, 'quizProgress')
@@ -28,18 +29,14 @@ const handleAnswer = (answer: string) => {
   quizProgress.value++
 }
 
-const handleResetQuiz = () => {
-  localStorage.removeItem('quizQuestions')
-  localStorage.removeItem('quizProgress')
-  localStorage.removeItem('quizScore')
-  router.push('/')
-}
-
-const currentQuestion = computed(() => questions.value[quizProgress.value])
+const currentQuestion = computed(() => questions.value[quizProgress.value] || {})
 const quizLength = computed(() => questions.value.length)
 
 const shuffledAnswers = computed(() => {
-  const answers = [...currentQuestion.value.incorrect_answers, currentQuestion.value.correct_answer]
+  const answers = [
+    ...(currentQuestion.value?.incorrect_answers || []),
+    currentQuestion.value?.correct_answer
+  ]
 
   return answers.sort(() => Math.random() - 0.5)
 })
