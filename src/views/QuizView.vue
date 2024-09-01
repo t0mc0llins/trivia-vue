@@ -44,17 +44,17 @@ const shuffledAnswers = computed(() => {
 </script>
 
 <template>
-  <main class="quiz-view">
-    <div class="question" v-if="quizProgress !== quizLength">
+  <main :class="$style.quizView">
+    <div v-if="quizProgress !== quizLength" :class="$style.question">
       <QuizQuestion
         :question="currentQuestion.question"
         :category="currentQuestion.category"
         :answers="shuffledAnswers"
         :handleAnswer="handleAnswer"
       />
-      <div class="status">
-        <p>Progress: {{ quizProgress + 1 }} / {{ quizLength }}</p>
-        <button class="secondary" @click="handleResetQuiz">New quiz</button>
+      <div :class="$style.status">
+        <p :class="$style.progressText">Progress: {{ quizProgress + 1 }} / {{ quizLength }}</p>
+        <button :class="$style.secondaryButton" @click="handleResetQuiz">New quiz</button>
       </div>
     </div>
     <QuizCompleted
@@ -66,21 +66,42 @@ const shuffledAnswers = computed(() => {
   </main>
 </template>
 
-<style scoped>
-div.question {
+<style module>
+.quizView {
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   flex: 1;
-  > div.status {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
-    > p {
-      font-size: 1.1em;
-      margin: 0;
-    }
-  }
+}
+
+.status {
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.progressText {
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.secondaryButton {
+  border: 1px solid gray;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background-color: #f1f1f1;
 }
 </style>

@@ -7,30 +7,44 @@ const { quizScore, quizLength, handleResetQuiz } = defineProps<{
 </script>
 
 <template>
-  <div>
+  <div :class="$style.completedQuiz">
     <h2>Quiz Completed</h2>
     <p>Score: {{ quizScore }} / {{ quizLength }}</p>
-    <button class="secondary" @click="handleResetQuiz">Play Again</button>
+    <button :class="$style.secondaryButton" @click="handleResetQuiz">Play Again</button>
   </div>
 </template>
 
-<style scoped>
-div {
+<style module>
+.completedQuiz {
   text-align: center;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
 
-  > h2 {
-    color: #333;
-    margin-bottom: 10px;
-  }
+.completedQuiz > h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
 
-  > p {
-    font-size: 1.1em;
-    margin-bottom: 20px;
-  }
+.completedQuiz > p {
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}
+
+.secondaryButton {
+  border: 1px solid gray;
+  background-color: white;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background-color: #f1f1f1;
 }
 </style>

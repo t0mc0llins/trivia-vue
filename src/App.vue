@@ -45,30 +45,4 @@ header {
   text-align: center;
   height: 80px;
 }
-
-button {
-  border: none;
-  padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-
-  &.primary {
-    color: white;
-    background-color: #4caf50;
-
-    &:hover {
-      background-color: #388e3c;
-    }
-  }
-
-  &.secondary {
-    border: 1px solid gray;
-    background-color: white;
-    &:hover {
-      background-color: #f1f1f1;
-    }
-  }
-}
 </style>

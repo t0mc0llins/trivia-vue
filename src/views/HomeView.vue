@@ -34,33 +34,37 @@ const handleSelectDifficulty = async (difficulty: QuizDifficulty, quizLength: nu
 </script>
 
 <template>
-  <main class="home-view">
-    <h2>General knowledge</h2>
+  <main :class="$style.homeView">
+    <h2 :class="$style.heading">General knowledge</h2>
 
-    <div class="body">
-      <div class="setting">
-        <p>1. Select quiz length</p>
-        <div class="quiz-length">
-          <div v-for="option in quizLengthOptions" :key="option.value">
+    <div :class="$style.body">
+      <div :class="$style.setting">
+        <p :class="$style.paragraph">1. Select quiz length</p>
+        <div :class="$style.quizLength">
+          <div v-for="option in quizLengthOptions" :key="option.value" :class="$style.option">
             <input
               type="radio"
               name="quizLength"
               v-model="quizLength"
               :value="option.value"
               :id="'quizLength-' + option.value"
+              :class="$style.radioInput"
             />
-            <label :for="'quizLength-' + option.value">{{
+            <label :for="'quizLength-' + option.value" :class="$style.label">{{
               option.label + ' (' + option.value + ' questions)'
             }}</label>
           </div>
         </div>
       </div>
 
-      <div class="setting">
-        <p>2. Select quiz difficulty</p>
-        <div class="quiz-difficulty">
-          <div v-for="option in quizDifficultyOptions" :key="option.value">
-            <button class="primary" @click="handleSelectDifficulty(option.value, quizLength)">
+      <div :class="$style.setting">
+        <p :class="$style.paragraph">2. Select quiz difficulty</p>
+        <div :class="$style.quizDifficulty">
+          <div v-for="option in quizDifficultyOptions" :key="option.value" :class="$style.option">
+            <button
+              :class="$style.primaryButton"
+              @click="handleSelectDifficulty(option.value, quizLength)"
+            >
               {{ 'Start ' + option.label }}
             </button>
           </div>
@@ -70,77 +74,107 @@ const handleSelectDifficulty = async (difficulty: QuizDifficulty, quizLength: nu
   </main>
 </template>
 
-<style scoped>
-main {
+<style module>
+.homeView {
   display: flex;
   flex-direction: column;
-  > h2 {
-    color: #333;
-    margin-bottom: 20px;
+}
+
+.heading {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.setting {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.paragraph {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.quizLength,
+.quizDifficulty {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.radioInput {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.label {
+  margin-right: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.primaryButton {
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  color: white;
+  background-color: #4caf50;
+}
+
+.primaryButton:hover {
+  background-color: #388e3c;
+}
+
+@media screen and (max-width: 600px) {
+  .setting {
+    align-items: center;
   }
 
-  > div.body {
-    flex: 1;
-    display: flex;
+  .paragraph {
+    width: 250px;
+    text-align: left;
+  }
+
+  .quizLength {
+    width: 100%;
     flex-direction: column;
-    justify-content: space-evenly;
-    > div.setting {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      > p {
-        font-size: 1em;
-        margin-bottom: 20px;
-        color: #666;
-      }
+    align-items: center;
 
-      > div {
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-
-        > div {
-          display: flex;
-          cursor: pointer;
-          > input[type='radio'] {
-            margin-right: 10px;
-            cursor: pointer;
-          }
-
-          > label {
-            margin-right: 20px;
-            font-weight: bold;
-            cursor: pointer;
-          }
-        }
-      }
+    .option {
+      width: 250px;
     }
+  }
 
-    @media screen and (max-width: 600px) {
-      > div.setting {
-        align-items: center;
-        > p {
-          width: 250px;
-          text-align: left;
-        }
-        > div {
-          width: 100%;
-          flex-direction: column;
-          &.quiz-length {
-            align-items: center;
-            > div {
-              width: 250px;
-            }
-          }
-          > div {
-            button {
-              width: 100%;
-            }
-          }
-        }
-      }
+  .primaryButton {
+    width: 100%;
+  }
+
+  .quizDifficulty {
+    width: 100%;
+    flex-direction: column;
+
+    .option {
+      justify-content: center;
     }
   }
 }

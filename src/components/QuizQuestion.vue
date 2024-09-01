@@ -14,19 +14,21 @@ const parseHtml = (str: string) => {
 </script>
 
 <template>
-  <div class="quiz-view">
+  <div :class="$style.questionView">
     <h2>{{ parseHtml(category) }}</h2>
     <p>{{ parseHtml(question) }}</p>
-    <div class="answers-container">
-      <div v-for="answer in answers" :key="answer">
-        <button class="primary" @click="handleAnswer(answer)">{{ parseHtml(answer) }}</button>
+    <div :class="$style.answersContainer">
+      <div v-for="answer in answers" :key="answer" :class="$style.answerWrapper">
+        <button :class="$style.primaryButton" @click="handleAnswer(answer)">
+          {{ parseHtml(answer) }}
+        </button>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-div.quiz-view {
+<style module>
+.questionView {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,50 +36,67 @@ div.quiz-view {
   width: 100%;
   max-width: 600px;
   margin-bottom: 20px;
+}
 
-  > h2 {
-    color: #333;
-    margin-bottom: 10px;
+.questionView > h2 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.questionView > p {
+  height: 50px;
+  font-size: 1.1em;
+}
+
+.answersContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  height: 160px;
+}
+
+.answerWrapper {
+  height: 70px;
+  width: 45%;
+}
+
+.primaryButton {
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  transition: background-color 0.3s ease;
+  color: white;
+  background-color: #4caf50;
+}
+
+.primaryButton:hover {
+  background-color: #388e3c;
+}
+
+@media screen and (max-width: 600px) {
+  .questionView > h2 {
+    height: 65px;
   }
 
-  > p {
-    height: 50px;
-    font-size: 1.1em;
+  .questionView > p {
+    height: 80px;
   }
 
-  > div.answers-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
+  .answersContainer {
+    flex-direction: column;
+    height: auto;
+    flex-wrap: nowrap;
+  }
+
+  .answerWrapper {
     width: 100%;
-    height: 160px;
-    > div {
-      height: 70px;
-      width: 45%;
-      > button {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  @media screen and (max-width: 600px) {
-    > h2 {
-      height: 65px;
-    }
-    > p {
-      height: 80px;
-    }
-    > div.answers-container {
-      flex-direction: column;
-      height: auto;
-      flex-wrap: nowrap;
-      > div {
-        width: 100%;
-        height: auto;
-      }
-    }
+    height: auto;
   }
 }
 </style>
