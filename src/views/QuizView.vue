@@ -11,6 +11,7 @@ const quizProgress = useLocalStorage(0, 'quizProgress')
 const quizScore = useLocalStorage(0, 'quizScore')
 
 onMounted(() => {
+  // Redirect to home if no questions are available else load current game state
   const quizQuestions = localStorage.getItem('quizQuestions')
   if (!quizQuestions) {
     router.push('/')

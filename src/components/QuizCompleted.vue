@@ -17,7 +17,11 @@ const { quizScore, quizLength, handleResetQuiz } = defineProps<{
 <style scoped>
 div {
   text-align: center;
-  margin-top: 20px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   > h2 {
     color: #333;

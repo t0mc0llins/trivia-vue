@@ -4,6 +4,7 @@ import { getQuestions } from '@/services/trivia'
 import router from '@/router'
 
 onMounted(() => {
+  // Redirect to /quiz if a quiz is in progress
   if (localStorage.getItem('quizQuestions')) {
     router.push('/quiz')
   }
