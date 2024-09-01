@@ -4,7 +4,7 @@ const fetchSessionToken = async () => {
   try {
     const response = await fetch('https://opentdb.com/api_token.php?command=request')
     const data = await response.json()
-    window.localStorage.setItem('sessionToken', data.token)
+    localStorage.setItem('sessionToken', data.token)
     return data.token
   } catch (error) {
     console.error(error)
@@ -50,11 +50,11 @@ const fetchQuestions = async (
 }
 
 export const getQuestions = async (quizLength: number, difficulty: QuizDifficulty) => {
-  const token = window.localStorage.getItem('sessionToken') || (await fetchSessionToken())
+  const token = localStorage.getItem('sessionToken') || (await fetchSessionToken())
   try {
     const questions = await fetchQuestions(quizLength, token, difficulty)
     if (questions && questions.length > 0) {
-      window.localStorage.setItem('quizQuestions', JSON.stringify(questions))
+      localStorage.setItem('quizQuestions', JSON.stringify(questions))
     }
   } catch (error) {
     console.error(error)

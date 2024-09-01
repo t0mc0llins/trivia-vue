@@ -4,7 +4,7 @@ export const useLocalStorage = (initialValue: number, key: string) => {
   const value = ref<number>(initialValue)
 
   onMounted(() => {
-    const storedValue = window.localStorage.getItem(key)
+    const storedValue = localStorage.getItem(key)
 
     if (storedValue) {
       value.value = JSON.parse(storedValue)
@@ -13,7 +13,7 @@ export const useLocalStorage = (initialValue: number, key: string) => {
     watch(
       value,
       (value) => {
-        window.localStorage.setItem(key, JSON.stringify(value))
+        localStorage.setItem(key, JSON.stringify(value))
       },
       { deep: true }
     )
