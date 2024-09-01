@@ -14,12 +14,12 @@ const parseHtml = (str: string) => {
 </script>
 
 <template>
-  <div :class="$style.questionView">
+  <div class="question-view" :class="$style.questionView">
     <h2>{{ parseHtml(category) }}</h2>
     <p>{{ parseHtml(question) }}</p>
     <div :class="$style.answersContainer">
       <div v-for="answer in answers" :key="answer" :class="$style.answerWrapper">
-        <button :class="$style.primaryButton" @click="handleAnswer(answer)">
+        <button class="primary" :class="$style.primaryButton" @click="handleAnswer(answer)">
           {{ parseHtml(answer) }}
         </button>
       </div>

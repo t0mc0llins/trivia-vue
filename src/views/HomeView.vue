@@ -34,7 +34,7 @@ const handleSelectDifficulty = async (difficulty: QuizDifficulty, quizLength: nu
 </script>
 
 <template>
-  <main :class="$style.homeView">
+  <main class="home-view" :class="$style.homeView">
     <h2 :class="$style.heading">General knowledge</h2>
 
     <div :class="$style.body">
@@ -62,6 +62,7 @@ const handleSelectDifficulty = async (difficulty: QuizDifficulty, quizLength: nu
         <div :class="$style.quizDifficulty">
           <div v-for="option in quizDifficultyOptions" :key="option.value" :class="$style.option">
             <button
+              class="primary"
               :class="$style.primaryButton"
               @click="handleSelectDifficulty(option.value, quizLength)"
             >

@@ -7,10 +7,12 @@ const { quizScore, quizLength, handleResetQuiz } = defineProps<{
 </script>
 
 <template>
-  <div :class="$style.completedQuiz">
+  <div class="completed-quiz" :class="$style.completedQuiz">
     <h2>Quiz Completed</h2>
     <p>Score: {{ quizScore }} / {{ quizLength }}</p>
-    <button :class="$style.secondaryButton" @click="handleResetQuiz">Play Again</button>
+    <button class="secondary" :class="$style.secondaryButton" @click="handleResetQuiz">
+      Play Again
+    </button>
   </div>
 </template>
 

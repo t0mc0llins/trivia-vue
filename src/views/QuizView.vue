@@ -44,7 +44,7 @@ const shuffledAnswers = computed(() => {
 </script>
 
 <template>
-  <main :class="$style.quizView">
+  <main class="quiz-view" :class="$style.quizView">
     <div v-if="quizProgress !== quizLength" :class="$style.question">
       <QuizQuestion
         :question="currentQuestion.question"
@@ -54,7 +54,9 @@ const shuffledAnswers = computed(() => {
       />
       <div :class="$style.status">
         <p :class="$style.progressText">Progress: {{ quizProgress + 1 }} / {{ quizLength }}</p>
-        <button :class="$style.secondaryButton" @click="handleResetQuiz">New quiz</button>
+        <button class="secondary" :class="$style.secondaryButton" @click="handleResetQuiz">
+          New quiz
+        </button>
       </div>
     </div>
     <QuizCompleted
