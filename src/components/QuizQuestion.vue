@@ -41,6 +41,7 @@ div.quiz-view {
   }
 
   > p {
+    height: 50px;
     font-size: 1.1em;
   }
 
@@ -50,7 +51,9 @@ div.quiz-view {
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
+    height: 160px;
     > div {
+      height: 70px;
       width: 45%;
       > button {
         width: 100%;
@@ -60,10 +63,19 @@ div.quiz-view {
   }
 
   @media screen and (max-width: 600px) {
+    > h2 {
+      height: 65px;
+    }
+    > p {
+      height: 80px;
+    }
     > div.answers-container {
       flex-direction: column;
+      height: auto;
+      flex-wrap: nowrap;
       > div {
         width: 100%;
+        height: auto;
       }
     }
   }
