@@ -95,7 +95,7 @@ const shuffledAnswers = computed(() => {
 
 .secondaryButton {
   border: 1px solid gray;
-  background-color: white;
+  background-color: #e6f0dc;
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
@@ -104,6 +104,6 @@ const shuffledAnswers = computed(() => {
 }
 
 .secondaryButton:hover {
-  background-color: #f1f1f1;
+  background-color: #c1e899;
 }
 </style>

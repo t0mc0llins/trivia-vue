@@ -132,18 +132,18 @@ const handleSelectDifficulty = async (difficulty: QuizDifficulty, quizLength: nu
 }
 
 .primaryButton {
-  border: none;
+  border: 1px solid #352f36;
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease;
-  color: white;
-  background-color: #4caf50;
+  background-color: #c1e899;
 }
 
 .primaryButton:hover {
-  background-color: #388e3c;
+  background-color: #55883b;
+  color: #e6f0dc;
 }
 
 @media screen and (max-width: 600px) {

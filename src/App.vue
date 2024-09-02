@@ -18,15 +18,19 @@ import { handleResetQuiz } from '@/services/trivia'
   padding: 0;
   box-sizing: border-box;
   font-family: 'Noto Sans', sans-serif;
+  color: #352f36;
+}
+
+html {
+  background-color: #e6f0dc;
 }
 
 main {
   max-width: 800px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: white;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   min-height: 400px;
   display: flex;
@@ -35,12 +39,12 @@ main {
     min-height: auto;
     margin: 0;
     height: calc(100vh - 80px);
+    border-radius: 0;
   }
 }
 
 header {
-  background-color: #4caf50;
-  color: white;
+  background-color: #c1e899;
   padding: 20px;
   text-align: center;
   height: 80px;

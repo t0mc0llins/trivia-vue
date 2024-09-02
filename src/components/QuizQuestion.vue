@@ -63,7 +63,7 @@ const parseHtml = (str: string) => {
 }
 
 .primaryButton {
-  border: none;
+  border: 1px solid #55883b;
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
@@ -71,12 +71,12 @@ const parseHtml = (str: string) => {
   width: 100%;
   height: 100%;
   transition: background-color 0.3s ease;
-  color: white;
-  background-color: #4caf50;
+  background-color: #c1e899;
 }
 
 .primaryButton:hover {
-  background-color: #388e3c;
+  background-color: #55883b;
+  color: #e6f0dc;
 }
 
 @media screen and (max-width: 600px) {
